@@ -14,3 +14,12 @@ GOAL:
 - Explore different small sized models (Experiment which of models works best with modified attributes mentioned above.)
 - Compare and contrast input to output related to fix needed
 - Make this AI team conversational between user and models via GUI
+
+
+Specifications used:
+.venv locked in 3.11.9 version
+Ollama Version 0.19.0
+
+any encountered error regarding pip install, crewai, langchain, ollama, langchain-ollama retry to install these dependencies via 
+pip install --upgrade pip
+pip install crewai langchain langchain-ollama ollama python-dotenv
