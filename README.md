@@ -3,7 +3,7 @@ This project consists of two AI agents leveraging the computing capacity of Llam
 
 How to run the file model via Ollama
 (on terminal)
-- ollama run <models> [args] 
+- ollama run modelname [args] 
 - python main.py
 - File path to the prompt of main.py
   - Running can be continous modify the runner.py
