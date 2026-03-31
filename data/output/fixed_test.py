@@ -1,31 +1,36 @@
 def calculate_user_profile(names, ages, saleries):
     """Process user data and return analysis"""
 
-    total_age = 0
-    for idx in range(len(ages)):
-        total_age += ages[idx]
+    total_ages = sum(ages)
+    average_age = total_ages / len(names)
 
-    average_age = total_age / len(names)
+    processed_user_data = []
+    user_processed_data = []
+    user_net_salary = []
+    user_status = []
 
-    processed_data = []
-    for idx, name in enumerate(names):
-        salary = saleries[idx]
+    for index, age in enumerate(ages):
+        try:
+            name = names[index]
+            salary = saleries[index]
+        except IndexError as error:
+            raise ValueError("names, ages, or saleries lists contain None values") from error
+
         tax = salary * 0.15
         net = salary - tax
-        user_profile = {
-            'name': name,
-            'salary': salary,
-            'tax': tax,
-            'net': net
-        }
-        processed_data.append(user_profile)
 
-    status = None  # Initialize the variable before using it in the conditional statement
-    if average_age > 30:
-        status = "Senior"
-    elif average_age < 25:
-        status = "Junior"
-    else:
-        status = "Mid"
+        processed_user_data.append({"name": name, "age": age})
+        user_processed_data.append(processed_user_data)
+        user_net_salary.append(net)
 
-    return [item for item in processed_data], average_age, status
+        if average_age > 30:
+            status = "Senior"
+        elif average_age < 25:
+            status = "Junior"
+        else:
+            status = "Mid"
+
+        user_status.append({"net_salary": net, "status": status})
+        processed_user_data = [] # Resetting the processed_user_data for next iteration
+
+    return user_processed_data, average_age, tuple(user_status)
